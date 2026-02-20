@@ -270,10 +270,23 @@
     .prob-bridge { flex-direction: column; padding: 28px 20px; text-align: center; }
     .bridge-text { font-size: 20px; max-width: 100%; }
 
-    /* SERVICES */
-    .svc-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 36px; }
-    .svc-card { min-height: unset !important; padding: 24px; gap: 16px; }
-    .svc-card.wide { grid-column: auto; }
+    /* SERVICES: force single column, stack icon+text vertically */
+    .services-layout,
+    .svc-grid { grid-template-columns: 1fr !important; gap: 12px; }
+    .service-row,
+    .svc-card {
+      flex-direction: column !important;
+      gap: 14px !important;
+      padding: 22px 18px !important;
+      grid-column: auto !important;
+      min-height: unset !important;
+    }
+    .service-row[style],
+    .svc-card[style] { grid-column: auto !important; }
+    .svc-icon,
+    .svc-icon-wrap { width: 44px !important; height: 44px !important; font-size: 18px !important; }
+    .svc-content,
+    .svc-body { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
     .svc-icon-wrap { width: 44px; height: 44px; font-size: 18px; flex-shrink: 0; }
 
     /* METRICS BAND */

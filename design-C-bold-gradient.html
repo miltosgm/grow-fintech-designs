@@ -497,11 +497,23 @@
     .problem-cta-block { flex-direction: column; padding: 28px 20px; text-align: center; }
     .problem-cta-text { font-size: 20px; }
 
-    /* SERVICES. 2 col → 1 col */
-    .services-layout { grid-template-columns: 1fr; gap: 14px; }
-    .service-row { flex-direction: row; gap: 16px; padding: 24px; }
-    .service-row[style*="grid-column"] { grid-column: auto; }
-    .svc-icon { width: 44px; height: 44px; font-size: 18px; }
+    /* SERVICES: force single column, stack icon+text vertically */
+    .services-layout,
+    .svc-grid { grid-template-columns: 1fr !important; gap: 12px; }
+    .service-row,
+    .svc-card {
+      flex-direction: column !important;
+      gap: 14px !important;
+      padding: 22px 18px !important;
+      grid-column: auto !important;
+      min-height: unset !important;
+    }
+    .service-row[style],
+    .svc-card[style] { grid-column: auto !important; }
+    .svc-icon,
+    .svc-icon-wrap { width: 44px !important; height: 44px !important; font-size: 18px !important; }
+    .svc-content,
+    .svc-body { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
 
     /* METRICS SECTION */
     .metrics-section { margin: 0 12px; padding: 44px 24px; border-radius: 20px; }
