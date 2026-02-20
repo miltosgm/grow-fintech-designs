@@ -433,6 +433,118 @@
     font-size: 13px; font-weight: 800;
     z-index: 1000;
   }
+
+  /* =====================
+     MOBILE RESPONSIVE
+  ===================== */
+  @media (max-width: 768px) {
+    .container { padding: 0 16px; }
+    section { padding: 60px 0; }
+    .design-label { display: none; }
+
+    /* NAV */
+    .nav-links { display: none; }
+    .nav-inner { padding: 0 16px; }
+    .nav-cta { padding: 9px 16px; font-size: 13px; }
+    .logo { font-size: 18px; }
+
+    /* HERO */
+    .hero { min-height: auto; padding: 120px 0 60px; }
+    h1 { font-size: clamp(40px, 11vw, 56px); letter-spacing: -0.04em; }
+    .hero-sub { font-size: 16px; }
+    .eyebrow-pill { font-size: 11px; padding: 5px 12px; }
+    .hero-ctas { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; padding: 15px 24px; border-radius: 12px; }
+    .hero-trust { gap: 14px; }
+    .trust-pill { font-size: 12px; }
+
+    /* LOGOS */
+    .logos-row { gap: 24px; }
+    .logo-placeholder { width: 72px; height: 24px; }
+
+    /* SECTION LABELS + H2 */
+    h2 { font-size: clamp(28px, 8vw, 40px); letter-spacing: -0.03em; }
+    .section-sub, .sec-sub { font-size: 15px; max-width: 100%; }
+
+    /* PROBLEM — 3 col → 1 col */
+    .problem-grid { grid-template-columns: 1fr; gap: 14px; }
+    .problem-cta-block { flex-direction: column; padding: 28px 20px; text-align: center; }
+    .problem-cta-text { font-size: 20px; }
+
+    /* SERVICES — 2 col → 1 col */
+    .services-layout { grid-template-columns: 1fr; gap: 14px; }
+    .service-row { flex-direction: row; gap: 16px; padding: 24px; }
+    .service-row[style*="grid-column"] { grid-column: auto; }
+    .svc-icon { width: 44px; height: 44px; font-size: 18px; }
+
+    /* METRICS SECTION */
+    .metrics-section { margin: 0 12px; padding: 44px 24px; border-radius: 20px; }
+    .metrics-inner { grid-template-columns: 1fr; gap: 36px; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .metric-num { font-size: 42px; }
+    .metrics-disclaimer { font-size: 11px; }
+
+    /* INDUSTRIES — 4 col → 2 col */
+    .industries-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .industry-chip { padding: 16px 14px; border-radius: 12px; }
+    .ind-icon { font-size: 22px; }
+    .ind-name { font-size: 13px; }
+
+    /* PROCESS — 4 col → 1 col stack */
+    .process-row { grid-template-columns: 1fr; border-radius: 16px; }
+    .proc-item { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
+    .proc-item:last-child { border-bottom: none; }
+    .proc-num { font-size: 36px; margin-bottom: 10px; }
+
+    /* CASES — asymmetric grid → 1 col */
+    .cases-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 14px; }
+    .case-card.featured { grid-row: auto; }
+    .case-card-inner { padding: 28px 24px; }
+    .case-num { font-size: 52px; }
+
+    /* DIFF SECTION */
+    .diff-section { margin: 0 12px; padding: 44px 24px; border-radius: 20px; }
+    .diff-header { flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .diff-header p { max-width: 100%; }
+    .diff-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .diff-card { padding: 22px 18px; }
+    .diff-icon-big { font-size: 28px; }
+    .diff-card h3 { font-size: 15px; }
+
+    /* TESTIMONIALS — 3 col → 1 col */
+    .testimonials-grid { grid-template-columns: 1fr; gap: 14px; }
+    .t-card { padding: 28px 24px; }
+
+    /* FAQ — 2 col → 1 col */
+    .faq-grid { grid-template-columns: 1fr; gap: 36px; }
+    .faq-intro a { display: inline-flex; }
+    .faq-item { padding: 18px 0; }
+    .faq-q { font-size: 15px; }
+
+    /* FINAL CTA */
+    .cta-box { padding: 48px 24px; border-radius: 20px; }
+    .cta-box h2 { font-size: clamp(28px, 8vw, 40px); }
+    .cta-tagline { font-size: 18px; }
+    .final-cta-btns { flex-direction: column; gap: 12px; }
+    .final-cta-btns .btn-primary,
+    .final-cta-btns .btn-secondary { width: 100%; justify-content: center; border-radius: 12px; }
+
+    /* FOOTER */
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; }
+    .footer-disclaimer { text-align: left; }
+    .footer-logo { font-size: 18px; }
+    .footer-tagline { font-size: 13px; }
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: clamp(36px, 10vw, 46px); }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .diff-grid { grid-template-columns: 1fr; }
+    .industries-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero-trust { flex-direction: column; gap: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -442,7 +554,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><span class="g">GROW</span> FINTECH</a>
+    <a href="#" class="logo" style="white-space:nowrap"><span class="g">GROW</span> FINTECH</a>
     <div class="nav-links">
       <a href="#">Services</a>
       <a href="#">Industries</a>
