@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grow Fintech — Design Concepts</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #080612; color: #fff; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+  header { padding: 60px 32px 40px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+  .logo span { color: #A78BFA; }
+  header p { font-size: 16px; color: rgba(255,255,255,0.5); }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 1100px; margin: 52px auto; padding: 0 28px 60px; }
+
+  .card { border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: all 0.25s; text-decoration: none; display: block; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+
+  .card-preview { height: 220px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .card-preview iframe { width: 1440px; height: 900px; transform: scale(0.28); transform-origin: top left; position: absolute; top: 0; left: 0; pointer-events: none; border: none; }
+
+  /* Fallback colours per card */
+  .c0 .card-preview { background: linear-gradient(135deg, #1A0B3B, #0B3B2B); }
+  .c1 .card-preview { background: linear-gradient(135deg, #09080F, #1a0f00); }
+  .c2 .card-preview { background: linear-gradient(135deg, #060C1A, #001828); }
+  .c3 .card-preview { background: linear-gradient(135deg, #080612, #1a0040); }
+
+  .hero-mock { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 28px; }
+  .mock-badge { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 12px; width: fit-content; }
+  .mock-h1 { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 8px; }
+  .mock-sub { font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 240px; }
+
+  /* Accent colours */
+  .c0 .mock-badge { background: rgba(62,255,160,0.15); color: #3EFFA0; }
+  .c0 .mock-h1 em { color: #3EFFA0; font-style: normal; }
+  .c0 .card-info { border-top-color: rgba(62,255,160,0.15); }
+  .c0 .tag { background: rgba(62,255,160,0.12); color: #3EFFA0; }
+  .c0:hover { border-color: rgba(62,255,160,0.3); }
+
+  .c1 .mock-badge { background: rgba(255,107,0,0.15); color: #FF6B00; }
+  .c1 .mock-h1 em { color: #FF6B00; font-style: normal; }
+  .c1 .card-info { border-top-color: rgba(255,107,0,0.15); }
+  .c1 .tag { background: rgba(255,107,0,0.12); color: #FF6B00; }
+  .c1:hover { border-color: rgba(255,107,0,0.3); }
+
+  .c2 .mock-badge { background: rgba(0,200,240,0.15); color: #00C8F0; }
+  .c2 .mock-h1 em { color: #00C8F0; font-style: normal; }
+  .c2 .card-info { border-top-color: rgba(0,200,240,0.15); }
+  .c2 .tag { background: rgba(0,200,240,0.12); color: #00C8F0; }
+  .c2:hover { border-color: rgba(0,200,240,0.3); }
+
+  .c3 .mock-badge { background: rgba(167,139,250,0.15); color: #A78BFA; }
+  .c3 .mock-h1 em { color: #A78BFA; font-style: normal; }
+  .c3 .card-info { border-top-color: rgba(167,139,250,0.15); }
+  .c3 .tag { background: rgba(167,139,250,0.12); color: #A78BFA; }
+  .c3:hover { border-color: rgba(167,139,250,0.3); }
+
+  .card-info { padding: 22px 24px; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .card-name { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 800; color: #fff; }
+  .tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
+  .card-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 16px; }
+  .view-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #fff; opacity: 0.7; transition: opacity 0.2s; }
+  .card:hover .view-btn { opacity: 1; }
+
+  footer { text-align: center; padding: 32px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 13px; color: rgba(255,255,255,0.25); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">GROW<span>.FINTECH</span></div>
+  <p>Homepage design concepts — click any card to preview the full design</p>
+</header>
+
+<div class="grid">
+
+  <!-- Original C -->
+  <a href="design-C-bold-gradient.html" class="card c0" target="_blank">
+    <div class="card-preview">
+      <div class="hero-mock">
+        <div class="mock-badge">Original · Fintech-Only Agency</div>
+        <div class="mock-h1">We Grow<br><em>Fintechs.</em><br>Profitably.</div>
+        <div class="mock-sub">Acquisition that scales. Demand that converts. Growth measured in revenue — not reports.</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-top">
+        <div class="card-name">C — Bold Gradient</div>
+        <div class="tag">🟢 Green</div>
+      </div>
+      <div class="card-desc">Dark purple background + electric green. Diagonal line pattern. Gradient violet metrics section.</div>
+      <div class="view-btn">View full design →</div>
+    </div>
+  </a>
+
+  <!-- C1 Orange -->
+  <a href="variation-C1-performance-orange.html" class="card c1" target="_blank">
+    <div class="card-preview">
+      <div class="hero-mock">
+        <div class="mock-badge">C1 · Performance-First</div>
+        <div class="mock-h1">We Don't Sell<br><em>Marketing.</em><br>We Sell Growth.</div>
+        <div class="mock-sub">If a channel can't prove its value, it doesn't get scaled. Simple as that.</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-top">
+        <div class="card-name">C1 — Performance Orange</div>
+        <div class="tag">🟠 Orange</div>
+      </div>
+      <div class="card-desc">Pure black background + electric orange. Grid hero pattern. Stats strip above fold. Metrics-first.</div>
+      <div class="view-btn">View full design →</div>
+    </div>
+  </a>
+
+  <!-- C2 Ice -->
+  <a href="variation-C2-ice-authority.html" class="card c2" target="_blank">
+    <div class="card-preview">
+      <div class="hero-mock">
+        <div class="mock-badge">C2 · 7 Years. One Industry.</div>
+        <div class="mock-h1">The Fintech<br>Agency That<br><em>Actually Delivers.</em></div>
+        <div class="mock-sub">7+ years working exclusively in fintech, across every vertical, every stage.</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-top">
+        <div class="card-name">C2 — Ice Authority</div>
+        <div class="tag">🩵 Cyan</div>
+      </div>
+      <div class="card-desc">Deep navy + ice cyan. Horizontal line pattern. Credibility stats strip. Authority-led positioning.</div>
+      <div class="view-btn">View full design →</div>
+    </div>
+  </a>
+
+  <!-- C3 Violet -->
+  <a href="variation-C3-violet-future.html" class="card c3" target="_blank">
+    <div class="card-preview">
+      <div class="hero-mock">
+        <div class="mock-badge">C3 · Built for What's Coming</div>
+        <div class="mock-h1">We Grow<br><em>Fintechs.</em><br>Profitably.</div>
+        <div class="mock-sub">And yes — we already do GEO. While your competitors are still arguing about SEO.</div>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-top">
+        <div class="card-name">C3 — Violet Future</div>
+        <div class="tag">🟣 Violet</div>
+      </div>
+      <div class="card-desc">Near-black + gradient violet/purple. Diagonal pattern. GEO-forward. Future-focused positioning.</div>
+      <div class="view-btn">View full design →</div>
+    </div>
+  </a>
+
+</div>
+
+<footer>grow-fintech.io · Design concepts — pick your favourite</footer>
+
+</body>
+</html>
