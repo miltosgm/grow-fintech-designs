@@ -435,6 +435,32 @@
   }
 
   /* =====================
+     DESKTOP POLISH
+  ===================== */
+  h1, h2, h3, p { overflow-wrap: break-word; word-break: break-word; }
+  h1 { line-height: 1.1; }
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: heroFadeUp 0.6s ease 0.1s both; }
+  .hero-content h1 { animation: heroFadeUp 0.7s ease 0.2s both; }
+  .hero-sub { animation: heroFadeUp 0.7s ease 0.35s both; }
+  .hero-ctas { animation: heroFadeUp 0.7s ease 0.5s both; }
+  .hero-trust { animation: heroFadeUp 0.7s ease 0.65s both; }
+
+  .btn-primary:hover { transform: translateY(-3px) scale(1.02) !important; box-shadow: 0 16px 48px rgba(62,255,160,0.4) !important; }
+  .btn-secondary:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); }
+
+  .problem-card:hover { transform: translateY(-4px); border-color: rgba(62,255,160,0.35) !important; box-shadow: 0 8px 28px rgba(62,255,160,0.1); }
+  .service-row { min-height: 140px; }
+  .service-row:hover { transform: translateY(-4px) !important; border-color: rgba(62,255,160,0.35) !important; box-shadow: 0 8px 28px rgba(62,255,160,0.1); }
+  .diff-card:hover { box-shadow: 0 8px 28px rgba(62,255,160,0.12); }
+  .case-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(62,255,160,0.1); }
+  .industry-chip:hover { transform: translateY(-2px); }
+
+  /* =====================
      MOBILE RESPONSIVE
   ===================== */
   @media (max-width: 768px) {
